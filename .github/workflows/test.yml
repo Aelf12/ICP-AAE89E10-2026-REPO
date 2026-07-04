@@ -9,6 +9,8 @@ on:
 
 env:
   FOUNDRY_PROFILE: ci
+  # Prevents tests from failing if they search for an RPC variable in the cloud
+  SEPOLIA_RPC_URL: https://eth-sepolia.g.alchemy.com/v2/placeholder
 
 jobs:
   check:
@@ -17,7 +19,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
         with:
           persist-credentials: false
           submodules: recursive
